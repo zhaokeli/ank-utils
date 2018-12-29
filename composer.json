@@ -3,10 +3,17 @@
     "description": "ank-utils",
     "type": "library",
     "authors": [
+    {
+        "name": "mokuyu",
+        "email": "735579768@qq.com"
+    }],
+    "require":
+    {},
+    "autoload":
+    {
+        "psr-4":
         {
-            "name": "mokuyu",
-            "email": "735579768@qq.com"
+            "ank\\utils\\": "libs"
         }
-    ],
-    "require": {}
+    }
 }
