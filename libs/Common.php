@@ -6,13 +6,13 @@ namespace ank\utils;
  */
 class Common
 {
-/**
- * opt请求数组数据
- * @param  [type] $url       url地址
- * @param  [type] $postData post的数据数组key=>value对,如果此项有数据自动转换为post请求
- * @param  [type] $headers  请求头信息为一维数组
- * @return [type]           返回网页内容
- */
+    /**
+     * opt请求数组数据
+     * @param  [type] $url       url地址
+     * @param  [type] $postData post的数据数组key=>value对,如果此项有数据自动转换为post请求
+     * @param  [type] $headers  请求头信息为一维数组
+     * @return [type]           返回网页内容
+     */
     public static function sendRequest($opt)
     {
         $conf = [
@@ -90,13 +90,13 @@ class Common
         die();
     }
 
-/**
- * 取参数
- * @param  string $key     [description]
- * @param  string $default [description]
- * @param  string $filter  string|array  $filter 过滤函数可以用正则,不符合的用默认值
- * @return [type]          [description]
- */
+    /**
+     * 取参数
+     * @param  string $key     [description]
+     * @param  string $default [description]
+     * @param  string $filter  string|array  $filter 过滤函数可以用正则,不符合的用默认值
+     * @return [type]          [description]
+     */
     public function input($key = '', $default = '')
     {
         $data = '';
@@ -138,12 +138,12 @@ class Common
 
     }
 
-/**
- * 获取客户端IP地址
- * @param integer $type 返回类型 0 返回IP地址 1 返回IPV4地址数字
- * @param boolean $adv 是否进行高级模式获取（有可能被伪装）
- * @return mixed
- */
+    /**
+     * 获取客户端IP地址
+     * @param integer $type 返回类型 0 返回IP地址 1 返回IPV4地址数字
+     * @param boolean $adv 是否进行高级模式获取（有可能被伪装）
+     * @return mixed
+     */
     public function get_client_ip($type = false, $adv = true)
     {
         $type      = $type ? 1 : 0;
@@ -174,6 +174,23 @@ class Common
         $long = sprintf("%u", ip2long($ip));
         $ip   = $long ? array($ip, $long) : array('0.0.0.0', 0);
         return $ip[$type];
+    }
+    /**
+     * 时间戳格式化
+     * @param int $time
+     * @return string 完整的时间显示
+     * @author huajie <banhuajie@163.com>
+     */
+    public function time_format($time = null, $format = 'Y-m-d H:i:s')
+    {
+        if (preg_match('/\d{1,4}[^\d]+\d{1,2}[^\d]+\d{1,2}(\s+\d{1,2}[^\d]+\d{1,2}[^\d]+\d{1,2})?/', $time)) {
+            return $time;
+        } else {
+            if (strlen($time) >= 12) {
+                $time /= 1000;
+            }
+            return $time === null ? date($format, time()) : ($time ? date($format, $time) : '--');
+        }
     }
 }
 
