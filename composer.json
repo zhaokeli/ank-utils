@@ -1,0 +1,12 @@
+{
+    "name": "mokuyu/ank-utils",
+    "description": "ank-utils",
+    "type": "library",
+    "authors": [
+        {
+            "name": "mokuyu",
+            "email": "735579768@qq.com"
+        }
+    ],
+    "require": {}
+}
